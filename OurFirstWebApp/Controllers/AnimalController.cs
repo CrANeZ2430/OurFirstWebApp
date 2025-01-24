@@ -6,11 +6,11 @@ namespace OurFirstWebApp.Controllers
 {
     [Route("api/animals")]
     [ApiController]
-    public class TasksController : ControllerBase
+    public class AnimalController : ControllerBase
     {
         private readonly IAnimalHotel s_animalHotel;
 
-        public TasksController(IAnimalHotel animalHotel)
+        public AnimalController(IAnimalHotel animalHotel)
         {
             s_animalHotel = animalHotel;
         }

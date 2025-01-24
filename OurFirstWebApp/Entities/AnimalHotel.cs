@@ -2,7 +2,10 @@
 
 public class AnimalHotel : IAnimalHotel
 {
-    private static List<Animal> s_animalHotel = [];
+    private static List<Animal> s_animalHotel = [
+        new Animal("Barsik", 2),
+        new Animal("Ginger", 3),
+        new Animal("Moony", 4)];
 
     public IEnumerable<Animal> GetAllAnimals()
     {
