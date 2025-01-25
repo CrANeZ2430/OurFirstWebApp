@@ -1,4 +1,6 @@
-﻿namespace OurFirstWebApp.Entities;
+﻿using OurFirstWebApp.Models;
+
+namespace OurFirstWebApp.Entities;
 
 public interface IAnimalHotel
 {

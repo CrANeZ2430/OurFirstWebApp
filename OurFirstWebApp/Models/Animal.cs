@@ -1,4 +1,4 @@
-﻿namespace OurFirstWebApp.Entities;
+﻿namespace OurFirstWebApp.Models;
 
 public class Animal(string name, byte age)
 {
