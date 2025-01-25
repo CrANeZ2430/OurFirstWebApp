@@ -41,20 +41,19 @@ public class AnimalController : ControllerBase
         return Ok("Animal added");
     }
 
-    [HttpPut]
+    [HttpPut("{index}")]
     public IActionResult UpdateAnimal(
         [Required] int index,
         [Required] string name,
         [Required] byte age)
     {
-        var animal = _animalHotel.GetAnimal(index);
         _animalHotel.UpdateAnimal(index, name, age);
 
         return Ok("Animal updated");
     }
 
 
-    [HttpDelete]
+    [HttpDelete("{index}")]
     public IActionResult DeleteAnimal(
         [Required] string index)
     {
