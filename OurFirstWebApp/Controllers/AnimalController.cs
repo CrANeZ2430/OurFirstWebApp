@@ -6,19 +6,12 @@ namespace OurFirstWebApp.Controllers;
 
 [Route("api/animals")]
 [ApiController]
-public class AnimalController : ControllerBase
+public class AnimalController(IAnimalHotel animalHotel) : ControllerBase
 {
-    private readonly IAnimalHotel _animalHotel;
-
-    public AnimalController(IAnimalHotel animalHotel)
-    {
-        _animalHotel = animalHotel;
-    }
-
     [HttpGet]
     public string[] GetAllAnimals()
     {
-        var animals = _animalHotel.GetAllAnimals().Select(x => $"{x.Name}, {x.Age}");
+        var animals = animalHotel.GetAllAnimals().Select(x => $"{x.Name}, {x.Age}");
 
         return animals.ToArray();
     }
@@ -27,7 +20,7 @@ public class AnimalController : ControllerBase
     public string GetAnimal(
         [Required] int index)
     {
-        var animal = _animalHotel.GetAnimal(index);
+        var animal = animalHotel.GetAnimal(index);
         return $"{animal.Name}, {animal.Age}";
     }
 
@@ -36,7 +29,7 @@ public class AnimalController : ControllerBase
         [Required] string name,
         [Required] byte age)
     {
-        _animalHotel.AddAnimal(name, age);
+        animalHotel.AddAnimal(name, age);
 
         return Ok("Animal added");
     }
@@ -47,7 +40,7 @@ public class AnimalController : ControllerBase
         [Required] string name,
         [Required] byte age)
     {
-        _animalHotel.UpdateAnimal(index, name, age);
+        animalHotel.UpdateAnimal(index, name, age);
 
         return Ok("Animal updated");
     }
@@ -57,7 +50,7 @@ public class AnimalController : ControllerBase
     public IActionResult DeleteAnimal(
         [Required] string index)
     {
-        _animalHotel.RemoveAnimal(Convert.ToInt32(index));
+        animalHotel.RemoveAnimal(Convert.ToInt32(index));
         return Ok("Animal removed");
     }
 }
